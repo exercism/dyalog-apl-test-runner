@@ -21,7 +21,6 @@ test_dir_path=$(realpath "${test_dir}")
 test_output=$(bin/run.sh "runner-tests" "${test_dir_path}" "${test_dir_path}")
 
 echo ${test_output}
-exit 0
 
 file="results.json"
 expected_file="expected_${file}"

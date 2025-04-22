@@ -1,0 +1,1 @@
+Assert←{ 0∊⍵: ⎕SIGNAL ⊂('EN' 8)('EM' 'ASSERTION ERROR')('Message' ⍺) ⋄ shy←0}
