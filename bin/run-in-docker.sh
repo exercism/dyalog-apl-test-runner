@@ -42,5 +42,6 @@ docker run \
     --read-only \
     --mount type=bind,src="${solution_dir}",dst=/solution \
     --mount type=bind,src="${output_dir}",dst=/output \
+    --mount type=bind,src="${PWD}/bin",dst=/opt/test-runner/bin \
     --mount type=tmpfs,dst=/tmp \
     exercism/dyalog-apl-test-runner "${slug}" /solution /output 

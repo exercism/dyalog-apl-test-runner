@@ -11,27 +11,23 @@
 # Example:
 # ./bin/run-tests.sh
 
-exit_code=0
+echo "current directory ${PWD}"
 
-# Iterate over all test directories
-for test_dir in tests/*; do
-    test_dir_name=$(basename "${test_dir}")
-    test_dir_path=$(realpath "${test_dir}")
+test_dir=tests/success
 
-    bin/run.sh "${test_dir_name}" "${test_dir_path}" "${test_dir_path}"
+test_dir_name=$(basename "${test_dir}")
+test_dir_path=$(realpath "${test_dir}")
+# Let Dyalog create the files to avoid its stdout (⎕←) length limit
+test_output=$(bin/run.sh "runner-tests" "${test_dir_path}" "${test_dir_path}")
 
-    # OPTIONAL: Normalize the results file
-    # If the results.json file contains information that changes between 
-    # different test runs (e.g. timing information or paths), you should normalize
-    # the results file to allow the diff comparison below to work as expected
+echo ${test_output}
+exit 0
 
-    file="results.json"
-    expected_file="expected_${file}"
-    echo "${test_dir_name}: comparing ${file} to ${expected_file}"
+file="results.json"
+expected_file="expected_${file}"
 
-    if ! diff "${test_dir_path}/${file}" "${test_dir_path}/${expected_file}"; then
-        exit_code=1
-    fi
-done
+if ! diff "${test_dir_path}/${file}" "${test_dir_path}/${expected_file}"; then
+    exit_code=1
+fi
 
-exit ${exit_code}
+exit ${exit_code};

@@ -1,4 +1,1 @@
-{
-  "version": 1,
-  "status": "pass"
-}
+{  "status": "pass",  "tests": [    {      "message": "",      "name": "Test_Success",      "status": "pass",      "test_code": "     ∇ r←Test_Success;Assert\r[1]    ⍝⍺←'.'   ⍝ Optionally provide test directory as left argument; there's gotta be a better way...\r[2]    Assert←{⍺←'assertion failure' ⋄ 0∊⍵:⍺ ⎕SIGNAL 8 ⋄ shy←0}\r[3]    2 ⎕FIX'Success.aplf'\r[4]    'Did not return 1'Assert 1≡Success ⍬\r[5]    r←1\r     ∇"    }  ],  "version": 2}

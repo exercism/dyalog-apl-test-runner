@@ -1,0 +1,20 @@
+#!/usr/bin/dyalogscript
+⍝ Who tests the test runner?
+⎕←'Testing test runner...'
+
+2⎕FIX'APLSource/Runner.apln'
+
+ListDir←{0 1⎕NINFO⎕OPT'Wildcard'1⊢⍵}
+
+⍝ Test runner tests are all folders in tests directory
+(name type)←ListDir 'tests/*'
+tests←name⌿⍨type=1   ⍝ Directories
+
+PrintJSON←{1(⎕JSON⎕OPT('Compact' 0))⍵}
+
+:For test :In tests
+  ⎕←' Testing ',test,'...'
+  r←Runner.Run test
+  ⎕←PrintJSON r
+  (PrintJSON r)⎕NPUT (test,'/results.json') 1
+:EndFor
