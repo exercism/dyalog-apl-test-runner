@@ -24,8 +24,8 @@ docker run \
     --network none \
     --read-only \
     --mount type=bind,src="${PWD}/tests",dst=/opt/test-runner/tests \
+    --mount type=bind,src="${PWD}/bin",dst=/opt/test-runner/bin \
     --mount type=tmpfs,dst=/tmp \
-    --volume "${PWD}/bin/:/opt/test-runner/bin/" \
     --workdir /opt/test-runner \
     --entrypoint /opt/test-runner/bin/run-tests.sh \
     exercism/dyalog-apl-test-runner
