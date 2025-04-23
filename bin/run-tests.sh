@@ -17,15 +17,16 @@ test_dir=tests/success
 
 test_dir_name=$(basename "${test_dir}")
 test_dir_path=$(realpath "${test_dir}")
+test_out_path="/tmp/${test_dir_name}"
 # Let Dyalog create the files to avoid its stdout (⎕←) length limit
-test_output=$(bin/run.sh "runner-tests" "${test_dir_path}" "${test_dir_path}")
+test_output=$(bin/run.sh "runner-tests" "${test_dir_path}" "${test_out_path}")
 
 echo ${test_output}
 
 file="results.json"
 expected_file="expected_${file}"
 
-if ! diff "${test_dir_path}/${file}" "${test_dir_path}/${expected_file}"; then
+if ! diff "${test_out_path}/${file}" "${test_dir_path}/${expected_file}"; then
     exit_code=1
 fi
 
