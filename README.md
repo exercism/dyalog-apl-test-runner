@@ -2,15 +2,27 @@
 
 The Docker image to automatically run tests on Dyalog APL solutions submitted to [Exercism].
 
-## Getting started
+## Building the Runner
+The runner consists of functions in the **APLSource** directory. It is developed using Link.
 
-Build the test runner, conforming to the [Test Runner interface specification](https://github.com/exercism/docs/blob/main/building/tooling/test-runners/interface.md).
-Update the files to match your track's needs. At the very least, you'll need to update `bin/run.sh`, `Dockerfile` and the test solutions in the `tests` directory
+In Dyalog:
 
-- Tip: look for `TODO:` comments to point you towards code that need updating
-- Tip: look for `OPTIONAL:` comments to point you towards code that _could_ be useful
-- Tip: if it proves impossible for the Docker image to work on a read-only filesystem, remove the `--read-only` flag from the `bin/run-in-docker.sh` and `bin/run-tests-in-docker.sh` files.
-  We don't yet enforce a read-only file system in production, but we might in the future!
+```apl
+]LINK.Create # APLSource
+```
+
+The runner workspace is used to allow the Docker container to run with a read-only file system. Therefore the **Runner.dws** workspace must be built from the source.
+
+In a terminal:
+
+```sh
+dyalog LOAD=Build.aplf
+```
+
+## Design
+This implementation of the version 2 test runner interface allows multiple tests: one APL function per test. This is one **.aplf** file per function, which allows natural development and debugging using [Link](https://dyalog.github.io/link).
+
+The tests make use of an `Assert` function which takes a left argument that is the message to be displayed to the user in case the test case fails. In this way, a single test function can test multiple aspects of an exercise and usefully report failures back to the user. For version 3, we will have to embed the `task_id`, likely as a comment, and likely will require 1 function to address 1 task.
 
 ## Run the test runner
 

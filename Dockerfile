@@ -1,8 +1,4 @@
-FROM alpine:3.18
+FROM dyalog/dyalog:19.0
 
-# install packages required to run the tests
-RUN apk add --no-cache jq coreutils
-
-WORKDIR /opt/test-runner
-COPY . .
+COPY . /opt/test-runner
 ENTRYPOINT ["/opt/test-runner/bin/run.sh"]

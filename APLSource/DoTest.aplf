@@ -1,0 +1,9 @@
+ DoTest←{
+    ⍝ Execute test function ⍵
+     nl←⎕UCS 13
+     Format←{1↓∊nl∘,¨⊆⍵}
+     0::'error'(Format ⎕DMX.DM)
+     8::'fail'(Format ⎕DMX.Message)
+     1=⍎⍵:'pass' ''
+     'fail' 'Test failed.'
+ }

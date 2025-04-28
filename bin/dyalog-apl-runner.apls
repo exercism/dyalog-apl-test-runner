@@ -1,0 +1,14 @@
+#!/usr/bin/dyalogscript
+⍝ Outputs JSON text to file describing the results of the test run
+
+⎕CY'Runner.dws'   ⍝ Working directory is /opt/test-runner
+
+⍝ Get from envrionment rather than arguments so that we do not have to check count or order of parameters
+(slug soln outdir outfile)←{2⎕NQ#'GetEnvironment' ⍵}¨'SLUG' 'SOLN' 'OUTDIR' 'OUTFILE'
+
+results←Runner.Run soln ⍝ Why slug needed if solution expected to be in solution folder?
+output←1(⎕JSON⎕OPT'Compact'0)results
+output ⎕NPUT outfile 1
+
+⎕←'Test results:'
+⎕←results.status

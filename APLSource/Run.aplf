@@ -1,0 +1,22 @@
+ Run←{
+⍝ ⍵: Directory of test suite to run
+⍝ ←: Namespace of test results (can be output with (1⎕JSON ns)⎕NPUT filename )
+     prev←CD ⍵
+
+     r←⎕NS''
+     r.version←2
+     0::r⊣r.status←'error'⊣r.message←'Could not load test suite ',⍵⊣CD prev
+     (name type)←0 1(⎕NINFO ⎕OPT'Wildcard' 1)'Test_*.aplf'
+     tests←name⌿⍨type=2
+     0∊⍴tests:r⊣r.status←'error'⊣r.message←'No test files found in directory ',⍵⊣CD prev
+     fns←⊃,/2 ⎕FIX¨tests
+     r.tests←⎕NS¨''⍨¨fns
+     r.tests.name←fns
+     r.tests.test_code←⎕VR¨fns
+     r.tests.(status message)←DoTest¨fns
+     r.status←'fail' 'pass'⊃⍨1+∧/r.tests.status∊⊂'pass'
+
+     _←CD prev
+
+     r
+ }
