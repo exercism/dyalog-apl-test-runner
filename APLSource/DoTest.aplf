@@ -2,6 +2,7 @@
     ⍝ Execute test function ⍵
     ⍝ In namespace ⍺
      ⍺←⎕THIS
+     _←(⍕⍺)⎕NS'Assert'   ⍝ Inject Assert function into test namespace
      nl←⎕UCS 13
      Format←{1↓∊nl∘,¨⊆⍵}
      0::'error'(Format ⎕DMX.DM)
