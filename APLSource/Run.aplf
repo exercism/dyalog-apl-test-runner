@@ -6,7 +6,7 @@
      r.version←2
      0::r⊣r.status←'error'⊣r.message←'Could not load test suite ',⍵
      settings.overwrite←1⊣settings←⎕NS''
-     link←settings ⎕SE.Link.Import'testns'⍵
+     link←settings ⎕SE.Link.Import'testns'⍵⊣⎕EX'testns'
      tests←'Test_'testns.⎕NL ¯3
      0∊⍴tests:r⊣r.status←'error'⊣r.message←'No test files found in directory ',⍵
      r.tests←⎕NS¨''⍨¨tests
