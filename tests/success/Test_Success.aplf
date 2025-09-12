@@ -1,5 +1,2 @@
 r←Test_Success
-2⎕FIX'Success.aplf'
-2⎕FIX'../Assert.aplf'
-'Must return 1'Assert 1≡Success⍬
-r←1
+r←1≡Success⍬
