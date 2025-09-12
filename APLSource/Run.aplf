@@ -11,7 +11,7 @@
      0∊⍴tests:r⊣r.status←'error'⊣r.message←'No test files found in directory ',⍵
      r.tests←⎕NS¨''⍨¨tests
      r.tests.name←tests
-     r.tests.test_code←⎕VR¨tests
+     r.tests.test_code←testns.⎕VR¨tests
      r.tests.(status message)←testns∘DoTest¨tests
      r.status←'fail' 'pass'⊃⍨1+∧/r.tests.status∊⊂'pass'
 
