@@ -1,6 +1,0 @@
-Build
-⍝ Build the Runner workspace from source
-⎕SE.Link.Import 'Runner' 'APLSource'
-⎕EX'Build'
-⎕SAVE'Runner.dws'
-⎕OFF

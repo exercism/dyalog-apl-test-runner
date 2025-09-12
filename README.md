@@ -2,7 +2,7 @@
 
 The Docker image to automatically run tests on Dyalog APL solutions submitted to [Exercism].
 
-## Building the Runner
+## Developing the Runner
 The runner consists of functions in the **APLSource** directory. It is developed using Link.
 
 In Dyalog:
@@ -11,18 +11,12 @@ In Dyalog:
 ]LINK.Create # APLSource
 ```
 
-The runner workspace is used to allow the Docker container to run with a read-only file system. Therefore the **Runner.dws** workspace must be built from the source.
-
-In a terminal:
-
-```sh
-dyalog LOAD=Build.aplf
-```
+The `Run` function is the interface that simply returns JSON text of the results object. The script **bin/dylaog-apl-runner.apls** gets parameters from the command line and outputs the result of the `Run` function to the file specified.
 
 ## Design
 This implementation of the version 2 test runner interface allows multiple tests: one APL function per test. This is one **.aplf** file per function, which allows natural development and debugging using [Link](https://dyalog.github.io/link).
 
-The tests make use of an `Assert` function which takes a left argument that is the message to be displayed to the user in case the test case fails. In this way, a single test function can test multiple aspects of an exercise and usefully report failures back to the user. For version 3, we will have to embed the `task_id`, likely as a comment, and likely will require 1 function to address 1 task.
+The tests make use of an `Assert` function which takes a left argument that is the message to be displayed to the user in case the test case fails. In this way, a single test function can test multiple aspects of an exercise and usefully report failures back to the user.
 
 ## Run the test runner
 
