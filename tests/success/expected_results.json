@@ -1,1 +1,1 @@
-{  "status": "pass",  "tests": [    {      "message": "",      "name": "Test_Success",      "status": "pass",      "test_code": "     ∇ r←Test_Success\r[1]    2 ⎕FIX'Success.aplf'\r[2]    2 ⎕FIX'../Assert.aplf'\r[3]    'Must return 1'Assert 1≡Success ⍬\r[4]    r←1\r     ∇"    }  ],  "version": 2}
+{  "status": "pass",  "tests": [    {      "message": "",      "name": "Test_Success",      "status": "pass",      "test_code": "     ∇ r←Test_Success\r[1]    r←1≡Success ⍬\r     ∇"    }  ],  "version": 2}
