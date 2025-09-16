@@ -13,21 +13,22 @@
 
 echo "current directory ${PWD}"
 
-test_dir=tests/success
+# Iterate over all test directories
+for test_dir in tests/*; do
+    test_dir_name=$(basename "${test_dir}")
+    test_dir_path=$(realpath "${test_dir}")
+    test_out_path="/tmp/${test_dir_name}"
+    # Let Dyalog create the files to avoid its stdout (⎕←) length limit
+    test_output=$(bin/run.sh "runner-tests" "${test_dir_path}" "${test_out_path}")
 
-test_dir_name=$(basename "${test_dir}")
-test_dir_path=$(realpath "${test_dir}")
-test_out_path="/tmp/${test_dir_name}"
-# Let Dyalog create the files to avoid its stdout (⎕←) length limit
-test_output=$(bin/run.sh "runner-tests" "${test_dir_path}" "${test_out_path}")
+    file="results.json"
+    expected_file="expected_${file}"
 
-echo ${test_output}
+    echo "${test_dir_name}: comparing ${file} to ${expected_file}"
 
-file="results.json"
-expected_file="expected_${file}"
-
-if ! diff "${test_out_path}/${file}" "${test_dir_path}/${expected_file}"; then
-    exit_code=1
-fi
+    if ! diff "${test_out_path}/${file}" "${test_dir_path}/${expected_file}"; then
+        exit_code=1
+    fi
+done
 
 exit ${exit_code};
