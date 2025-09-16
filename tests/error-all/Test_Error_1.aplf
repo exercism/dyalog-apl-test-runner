@@ -1,0 +1,3 @@
+ r←Test_Error_1
+ r←3+   ⍝ SYNTAX ERROR
+ 
