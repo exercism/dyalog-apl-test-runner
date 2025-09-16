@@ -1,1 +1,24 @@
-{  "status": "fail",  "tests": [    {      "message": "",      "name": "Test_Error_1",      "status": "pass",      "test_code": "     ∇ r←Test_Error_1\r[1]    r←1   ⍝ Pass\r[2]   \r     ∇"    },    {      "message": "",      "name": "Test_Error_2",      "status": "pass",      "test_code": "     ∇ r←Test_Error_2\r[1]    r←1   ⍝ Pass\r[2]   \r     ∇"    },    {      "message": "⍎ERROR 505\rDoTest[9] Test_Error_3\r          ∧",      "name": "Test_Error_3",      "status": "error",      "test_code": "     ∇ r←Test_Error_3\r[1]    ⎕SIGNAL⊂('EN' 505)('Message' 'Custom Error')('Vendor' 'Dyalog test runner tests')\r[2]   \r     ∇"    }  ],  "version": 2}
+{
+  "status": "fail",
+  "tests": [
+    {
+      "message": "",
+      "name": "Test_Error_1",
+      "status": "pass",
+      "test_code": "     ∇ r←Test_Error_1\r[1]    r←1   ⍝ Pass\r[2]   \r     ∇"
+    },
+    {
+      "message": "",
+      "name": "Test_Error_2",
+      "status": "pass",
+      "test_code": "     ∇ r←Test_Error_2\r[1]    r←1   ⍝ Pass\r[2]   \r     ∇"
+    },
+    {
+      "message": "⍎ERROR 505\rDoTest[9] Test_Error_3\r          ∧",
+      "name": "Test_Error_3",
+      "status": "error",
+      "test_code": "     ∇ r←Test_Error_3\r[1]    ⎕SIGNAL⊂('EN' 505)('Message' 'Custom Error')('Vendor' 'Dyalog test runner tests')\r[2]   \r     ∇"
+    }
+  ],
+  "version": 2
+}

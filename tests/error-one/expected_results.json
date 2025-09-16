@@ -1,1 +1,12 @@
-{  "status": "fail",  "tests": [    {      "message": "SYNTAX ERROR\rTest_Error[1] r←3+   ⍝ SYNTAX ERROR\r                 ∧",      "name": "Test_Error",      "status": "error",      "test_code": "     ∇ r←Test_Error\r[1]    r←3+   ⍝ SYNTAX ERROR\r[2]   \r     ∇"    }  ],  "version": 2}
+{
+  "status": "fail",
+  "tests": [
+    {
+      "message": "SYNTAX ERROR\rTest_Error[1] r←3+   ⍝ SYNTAX ERROR\r                 ∧",
+      "name": "Test_Error",
+      "status": "error",
+      "test_code": "     ∇ r←Test_Error\r[1]    r←3+   ⍝ SYNTAX ERROR\r[2]   \r     ∇"
+    }
+  ],
+  "version": 2
+}

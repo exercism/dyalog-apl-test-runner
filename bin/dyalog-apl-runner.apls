@@ -10,8 +10,8 @@
 home ← 0 Runner.CD soln
 
 results←Runner.Run soln ⍝ Why slug needed if solution expected to be in solution folder?
-output←1(⎕JSON⎕OPT'Compact'0)results
-output ⎕NPUT outfile 1
+output←1(⎕JSON⎕OPT'Compact'0)results   ⍝ Readable (non-compact) JSON result
+output (⎕NPUT⎕OPT'NEOL'2) outfile 1    ⍝ Output using OS line endings (NEOL 2)
 
 0 Runner.CD home
 
