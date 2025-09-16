@@ -35,8 +35,6 @@ echo "Testing ${slug}..."
 # stderr to capture it
 test_output=$(SLUG="$slug" SOLN="$solution_dir" OUTDIR="$output_dir" OUTFILE="$results_file" ./bin/dyalog-apl-runner.apls)
 
-exit 0;
-
     # OPTIONAL: Sanitize the output
     # In some cases, the test output might be overly verbose, in which case stripping
     # the unneeded information can be very helpful to the student
