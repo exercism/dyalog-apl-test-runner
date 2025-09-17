@@ -20,7 +20,7 @@ for test_dir in tests/*; do
     test_dir_path=$(realpath "${test_dir}")
     test_out_path="/tmp/${test_dir_name}"
     # Let Dyalog create the files to avoid its stdout (⎕←) length limit
-    test_output=$(bin/run.sh "runner-tests" "${test_dir_path}" "${test_out_path}")
+    bin/run.sh "runner-tests/$test_dir_name" "${test_dir_path}" "${test_out_path}"
 
     file="results.json"
     expected_file="expected_${file}"
