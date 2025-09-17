@@ -11,6 +11,7 @@
 # Example:
 # ./bin/run-tests.sh
 
+exit_code=0
 echo "current directory ${PWD}"
 
 # Iterate over all test directories
