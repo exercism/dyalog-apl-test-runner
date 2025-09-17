@@ -31,8 +31,6 @@ mkdir -p "${output_dir}"
 
 echo "Testing ${slug}..."
 
-# Run the tests for the provided implementation file and redirect stdout and
-# stderr to capture it
 test_output=$(SLUG="$slug" SOLN="$solution_dir" OUTDIR="$output_dir" OUTFILE="$results_file" ./bin/dyalog-apl-runner.apls)
 
     # OPTIONAL: Sanitize the output
