@@ -13,7 +13,8 @@
      r.tests.name←tests
      r.tests.test_code←testns.⎕VR¨tests
      r.tests.(status message)←testns∘DoTest¨tests
-     r.status←'fail' 'pass'⊃⍨1+∧/r.tests.status∊⊂'pass'
+     status←'fail' 'error' 'pass'
+     r.status←status⊃⍨1+0 1 2+.×∧/status∘.≡r.tests.status
 
      r
  }

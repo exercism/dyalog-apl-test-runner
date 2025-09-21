@@ -1,5 +1,5 @@
 {
-  "status": "fail",
+  "status": "error",
   "tests": [
     {
       "message": "SYNTAX ERROR\rTest_Error_1[1] r←3+   ⍝ SYNTAX ERROR\r                   ∧",
