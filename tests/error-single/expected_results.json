@@ -1,23 +1,11 @@
 {
-  "status": "fail",
+  "status": "error",
   "tests": [
     {
-      "message": "",
-      "name": "Test_Error_1",
-      "status": "pass",
-      "test_code": "     ∇ r←Test_Error_1\r[1]    r←1   ⍝ Pass\r[2]   \r     ∇"
-    },
-    {
-      "message": "",
-      "name": "Test_Error_2",
-      "status": "pass",
-      "test_code": "     ∇ r←Test_Error_2\r[1]    r←1   ⍝ Pass\r[2]   \r     ∇"
-    },
-    {
-      "message": "⍎ERROR 505\rDoTest[9] Test_Error_3\r          ∧",
-      "name": "Test_Error_3",
+      "message": "SYNTAX ERROR\rTest_Error[1] r←3+   ⍝ SYNTAX ERROR\r                 ∧",
+      "name": "Test_Error",
       "status": "error",
-      "test_code": "     ∇ r←Test_Error_3\r[1]    ⎕SIGNAL⊂('EN' 505)('Message' 'Custom Error')('Vendor' 'Dyalog test runner tests')\r[2]   \r     ∇"
+      "test_code": "     ∇ r←Test_Error\r[1]    r←3+   ⍝ SYNTAX ERROR\r[2]   \r     ∇"
     }
   ],
   "version": 2
