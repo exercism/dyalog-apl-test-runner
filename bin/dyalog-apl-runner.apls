@@ -1,0 +1,19 @@
+#!/usr/bin/dyalogscript DYALOG_INITSESSION=1
+⍝ Outputs JSON text to file describing the results of the test run
+
+⍝ Import test runner
+⎕SE.Link.Import 'Runner' 'APLSource'
+
+⍝ Get from envrionment rather than arguments so that we do not have to check count or order of parameters
+(slug soln outdir outfile)←{2⎕NQ#'GetEnvironment' ⍵}¨'SLUG' 'SOLN' 'OUTDIR' 'OUTFILE'
+
+home ← 0 Runner.CD soln
+
+results←Runner.Run soln ⍝ Why slug needed if solution expected to be in solution folder?
+output←1(⎕JSON⎕OPT'Compact'0)results   ⍝ Readable (non-compact) JSON result
+output (⎕NPUT⎕OPT'NEOL'2) outfile 1    ⍝ Output using OS line endings (NEOL 2)
+
+0 Runner.CD home
+
+⎕←'Test results:'
+⎕←results.status

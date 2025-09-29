@@ -1,4 +1,12 @@
 {
-  "version": 1,
-  "status": "pass"
+  "status": "pass",
+  "tests": [
+    {
+      "message": "",
+      "name": "Test_Success",
+      "status": "pass",
+      "test_code": "     ∇ r←Test_Success\r[1]    r←1≡Success ⍬\r     ∇"
+    }
+  ],
+  "version": 2
 }

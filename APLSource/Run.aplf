@@ -1,0 +1,20 @@
+ Run←{
+⍝ ⍵: Directory of test suite to run
+⍝ ←: Namespace of test results (can be output with (1⎕JSON ns)⎕NPUT filename )
+
+     r←⍎'result'⎕NS''⊣⎕EX'result'
+     r.version←2
+     0::r⊣r.status←'error'⊣r.message←'Could not load test suite ',⍵
+     settings.overwrite←1⊣settings←⎕NS''
+     link←settings ⎕SE.Link.Import'testns'⍵⊣⎕EX'testns'
+     tests←'Test_'testns.⎕NL ¯3
+     0∊⍴tests:r⊣r.status←'error'⊣r.message←'No test files found in directory ',⍵
+     r.tests←⎕NS¨''⍨¨tests
+     r.tests.name←tests
+     r.tests.test_code←testns.⎕VR¨tests
+     r.tests.(status message)←testns∘DoTest¨tests
+     status←'fail' 'error' 'pass'
+     r.status←status⊃⍨1+0 1 2+.×∧/status∘.≡r.tests.status
+
+     r
+ }

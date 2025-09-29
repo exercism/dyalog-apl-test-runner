@@ -1,5 +1,5 @@
 {
-  "version": 1,
-  "status": "fail",
-  "message": "TODO: replace with correct output"
+  "message": "No test files found in directory /opt/test-runner/tests/empty-file",
+  "status": "error",
+  "version": 2
 }
